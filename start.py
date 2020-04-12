@@ -1,9 +1,9 @@
-import sys, random, time
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QLabel
+import sys, random, socket, json, platform
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QLabel, QAction
 from PyQt5.QtCore import Qt, QBasicTimer, pyqtSignal
 from PyQt5.QtGui import QPainter, QColor
-import card
-colorList = ['b','g','r','y']
+import card, onlineDialog
+colorList = ['b','g','r','y'] # n:no color
 class Main(QMainWindow):
     cardLeft = list(range(1,109))
     myCard = []
@@ -12,23 +12,41 @@ class Main(QMainWindow):
     done = False
     nowOut = []
     step = 0
-    nowDir = False # 0:cw 1:ccw
+    nowColor = 'n'
+    # nowDir = False # 0:cw 1:ccw
     colorPad = []
+    onlineDialog = None
+    lastCard = ''
     def __init__(self):
         super().__init__()
         self.initUI()
     def initUI(self):
         self.resize(960,640)
         self.setWindowTitle('UNO Cards')
-        cards = self.cardFun(7)
-        for cardID, num in zip(self.cardFun(20), range(20)):
-            self.myCard.append(card.Card(self, cardID, 150+25*num, 510, True))
-        for cardID, num in zip(self.cardFun(20), range(20)):
-            self.p1Card.append(card.Card(self, cardID, 30, 30+10*num))
-        # for cardID, num in zip(self.cardFun(20), range(20)):
+        # if len(sys.argv) == 0:
+        #     cardNum = int(sys.argv[0])
+        # else:
+        cardNum = 7
+        menubar = self.menuBar()
+        # menubar.setNativeMenubar(False)
+        if platform.system() == 'Darwin':
+            onlineAction = QPushButton('Get on line', self)
+            onlineAction.pressed.connect(self.getOnline)
+            onlineAction.setGeometry(20,5,100,30)
+        else:
+            onlineAction = QAction('Get on line', self)        
+            onlineAction.setShortcut('Ctrl+E')
+            onlineAction.triggered.connect(self.getOnline)
+            menubar.addAction(onlineAction)
+        # cards = self.cardFun(7)
+        # for cardID, num in zip(self.cardFun(cardNum), range(cardNum)):
+        #     self.myCard.append(card.Card(self, cardID, 150+25*num, 510, True))
+        # for cardID, num in zip(self.cardFun(cardNum), range(cardNum)):
+        #     self.p1Card.append(card.Card(self, cardID, 30, 30+10*num))
+        # for cardID, num in zip(self.cardFun(cardNum), range(cardNum)):
         #     self.p2Card.append(card.Card(self, cardID, 868, 30+10*num))
-
-        # self.p1Left = QLabel('abc', self)
+        self.p1Left = QLabel(str(len(self.p1Card)), self)
+        self.p1Left.setGeometry(30, 40, 62, 20)
         self.playButton = QPushButton(self)
         self.playButton.pressed.connect(self.playMine)
         self.playButton.setStyleSheet("QPushButton{background-image: url(assets/play.png)} QPushButton{border: none}")
@@ -58,7 +76,24 @@ class Main(QMainWindow):
         tmp.setEnabled(False)
         self.colorPad.append(tmp)
         self.timer1 = QBasicTimer()
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.show()
+    def isValid(self, lastCard, nowCard):
+        if self.nowColor == 'n':
+            return True
+        if nowCard == 'wild' or nowCard == 'wild4':
+            return True
+        if self.nowColor == nowCard[0]:
+            return True
+        if lastCard[1:] == nowCard[1:]:
+            self.nowColor = nowCard[0]
+            return True
+        return False
+    def getOnline(self):
+        # self.sock.d
+        self.onlineDialog = onlineDialog.OnlineDialog(self.sock, self.replay)
+        # self.onlineDialog.
+        print(self.onlineDialog.pid, 'a')
     def noMine(self):
         self.timer1.start(15, self)
         self.myCard.append(card.Card(self, self.getRandomCard(), 150+25*len(self.myCard), 510, True))
@@ -76,36 +111,45 @@ class Main(QMainWindow):
     def yColorPadEvent(self):
         self.colorPadEvent('y')
     def colorPadEvent(self, color):
-        self.colorPad[0].setStyleSheet('QPushButton{background-image: url(assets/rButton.png)} QPushButton{border: none}')
+        self.colorPad[0].setStyleSheet('QPushButton{background-image: url(empty.png)} QPushButton{border: none}')
         self.colorPad[0].setEnabled(False)
-        self.colorPad[1].setStyleSheet('QPushButton{background-image: url(assets/bButton.png)} QPushButton{border: none}')
+        self.colorPad[1].setStyleSheet('QPushButton{background-image: url(empty.png)} QPushButton{border: none}')
         self.colorPad[1].setEnabled(False)
-        self.colorPad[2].setStyleSheet('QPushButton{background-image: url(assets/yButton.png)} QPushButton{border: none}')
+        self.colorPad[2].setStyleSheet('QPushButton{background-image: url(empty.png)} QPushButton{border: none}')
         self.colorPad[2].setEnabled(False)
-        self.colorPad[3].setStyleSheet('QPushButton{background-image: url(assets/gButton.png)} QPushButton{border: none}')
+        self.colorPad[3].setStyleSheet('QPushButton{background-image: url(empty.png)} QPushButton{border: none}')
         self.colorPad[3].setEnabled(False)
-    def showColorPad(self):
-        self.colorPad[0].setStyleSheet('QPushButton{background-image: url(assets/rButton.png)} QPushButton{border: none}')
-        self.colorPad[0].setEnabled(True)
-        self.colorPad[1].setStyleSheet('QPushButton{background-image: url(assets/bButton.png)} QPushButton{border: none}')
-        self.colorPad[1].setEnabled(True)
-        self.colorPad[2].setStyleSheet('QPushButton{background-image: url(assets/yButton.png)} QPushButton{border: none}')
-        self.colorPad[2].setEnabled(True)
-        self.colorPad[3].setStyleSheet('QPushButton{background-image: url(assets/gButton.png)} QPushButton{border: none}')
-        self.colorPad[3].setEnabled(True)
+    def showColorPad(self, part=['r','y','b','g']):
+        if 'r' in part:
+            self.colorPad[0].setStyleSheet('QPushButton{background-image: url(assets/rButton.png)} QPushButton{border: none}')
+            self.colorPad[0].setEnabled(True)
+        if 'b' in part:
+            self.colorPad[1].setStyleSheet('QPushButton{background-image: url(assets/bButton.png)} QPushButton{border: none}')
+            self.colorPad[1].setEnabled(True)
+        if 'y' in part:
+            self.colorPad[2].setStyleSheet('QPushButton{background-image: url(assets/yButton.png)} QPushButton{border: none}')
+            self.colorPad[2].setEnabled(True)
+        if 'g' in part:
+            self.colorPad[3].setStyleSheet('QPushButton{background-image: url(assets/gButton.png)} QPushButton{border: none}')
+            self.colorPad[3].setEnabled(True)
     def playMine(self):
         self.done = 0
+        self.nowOut = []
         for cardd in self.myCard:
             self.carddState = cardd.play(434, 400)
             if self.carddState != 0:
-                self.myCard.remove(cardd)
                 self.nowOut.append(cardd)
                 self.done+=1
-                if self.carddState == 2:
-                    self.showColorPad()
+                # if self.carddState == 2:
+                    # self.showColorPad()
+        for cardd in self.nowOut:
+            if self.isValid(self.lastCard, cardd):
+                break
+        else:
+            return
         if self.done == 0:
             return
-        self.timer1.start(15, self)
+        self.timer1.start(150, self)
         for cardd, num in zip(self.myCard, range(len(self.myCard))):
             cardd.move(150+25*num, 510)
         self.noButton.setDisabled(True)
@@ -125,7 +169,7 @@ class Main(QMainWindow):
     #     pass
     def timerEvent(self, e):
         # if e is self.timer1:
-        if self.step >= 15:
+        if self.sock.recv():
             print(self.nowOut)
             self.timer1.stop()
             for i in self.nowOut:
@@ -165,6 +209,20 @@ class Main(QMainWindow):
         for _ in range(num):
             tmp.append(self.getRandomCard())
         return tmp
+    # def update(self):
+    #     super().update()
+    #     print(self.
+    # onlineDialog.result)
+    #     if self.onlineDialog.result == 1:
+    #         self.replay()
+    
+    def replay(self):
+        self.sock.send(b'r')
+        datas = self.sock.recv(1024)
+        print(datas)
+        cards = json.loads(datas.decode('utf-8'))
+        for cardID, num in zip(cards, range(len(cards))):
+            self.myCard.append(card.Card(self, cardID, 150+25*num, 510, True))
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     main = Main()

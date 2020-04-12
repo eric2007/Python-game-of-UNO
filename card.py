@@ -37,10 +37,10 @@ class Card(QPushButton):
             self.setGeometry(x,y,62,97)
             self.pressed.connect(self.pas)
             self.cardState = 2
-            print(self.cardID)
+            # print(self.cardID)
             if self.cardID == 'wild':
                 return 2
-                print('wild')
+                # print('wild')
             return 1
         return 0
     def kill(self):
