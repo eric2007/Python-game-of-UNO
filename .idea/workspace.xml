@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="49c79d69-c2e1-49b8-a320-8b684ecc906e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/card.py" beforeDir="false" afterPath="$PROJECT_DIR$/card.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/start.py" afterDir="false" />
+    <list default="true" id="49c79d69-c2e1-49b8-a320-8b684ecc906e" name="Default Changelist" comment="移交到git">
+      <change beforePath="$PROJECT_DIR$/.idea/game3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/game3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/onlineDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/onlineDialog.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +39,82 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager" selected="Python.start">
+    <configuration name="onlineDialog" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="game3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/onlineDialog.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="game3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/local/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="game3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/local/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/start.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.start" />
+        <item itemvalue="Python.server" />
+        <item itemvalue="Python.onlineDialog" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -35,12 +127,110 @@
       <option name="presentableId" value="Default" />
       <updated>1586674522531</updated>
     </task>
+    <task id="LOCAL-00001" summary="移交到git">
+      <created>1586674754478</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586674754478</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="移交到git" />
+    <option name="LAST_COMMIT_MESSAGE" value="移交到git" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="354" y="101" key="#Inspections" timestamp="1586675841518">
+      <screen x="0" y="23" width="1440" height="785" />
+    </state>
+    <state x="354" y="101" key="#Inspections/0.23.1440.785@0.23.1440.785" timestamp="1586675841518" />
+    <state x="406" y="30" key="#onlineDialog" timestamp="1586675036989">
+      <screen x="0" y="23" width="1440" height="785" />
+    </state>
+    <state x="406" y="30" key="#onlineDialog/0.23.1440.785@0.23.1440.785" timestamp="1586675036989" />
+    <state x="406" y="30" key="#server" timestamp="1586675071967">
+      <screen x="0" y="23" width="1440" height="785" />
+    </state>
+    <state x="406" y="30" key="#server/0.23.1440.785@0.23.1440.785" timestamp="1586675071967" />
+    <state x="406" y="30" key="#start" timestamp="1586675006699">
+      <screen x="0" y="23" width="1440" height="785" />
+    </state>
+    <state x="406" y="30" key="#start/0.23.1440.785@0.23.1440.785" timestamp="1586675006699" />
+    <state width="709" height="199" key="GridCell.Tab.0.bottom" timestamp="1586680091107">
+      <screen x="0" y="23" width="1440" height="790" />
+    </state>
+    <state width="709" height="199" key="GridCell.Tab.0.bottom/0.23.1440.785@0.23.1440.785" timestamp="1586678416782" />
+    <state width="709" height="199" key="GridCell.Tab.0.bottom/0.23.1440.790@0.23.1440.790" timestamp="1586680091107" />
+    <state width="709" height="199" key="GridCell.Tab.0.center" timestamp="1586680091107">
+      <screen x="0" y="23" width="1440" height="790" />
+    </state>
+    <state width="709" height="199" key="GridCell.Tab.0.center/0.23.1440.785@0.23.1440.785" timestamp="1586678416781" />
+    <state width="709" height="199" key="GridCell.Tab.0.center/0.23.1440.790@0.23.1440.790" timestamp="1586680091107" />
+    <state width="709" height="199" key="GridCell.Tab.0.left" timestamp="1586680091106">
+      <screen x="0" y="23" width="1440" height="790" />
+    </state>
+    <state width="709" height="199" key="GridCell.Tab.0.left/0.23.1440.785@0.23.1440.785" timestamp="1586678416780" />
+    <state width="709" height="199" key="GridCell.Tab.0.left/0.23.1440.790@0.23.1440.790" timestamp="1586680091106" />
+    <state width="709" height="199" key="GridCell.Tab.0.right" timestamp="1586680091107">
+      <screen x="0" y="23" width="1440" height="790" />
+    </state>
+    <state width="709" height="199" key="GridCell.Tab.0.right/0.23.1440.785@0.23.1440.785" timestamp="1586678416782" />
+    <state width="709" height="199" key="GridCell.Tab.0.right/0.23.1440.790@0.23.1440.790" timestamp="1586680091107" />
+    <state width="709" height="249" key="GridCell.Tab.1.bottom" timestamp="1586678406671">
+      <screen x="0" y="23" width="1440" height="785" />
+    </state>
+    <state width="709" height="249" key="GridCell.Tab.1.bottom/0.23.1440.785@0.23.1440.785" timestamp="1586678406671" />
+    <state width="709" height="249" key="GridCell.Tab.1.center" timestamp="1586678406670">
+      <screen x="0" y="23" width="1440" height="785" />
+    </state>
+    <state width="709" height="249" key="GridCell.Tab.1.center/0.23.1440.785@0.23.1440.785" timestamp="1586678406670" />
+    <state width="709" height="249" key="GridCell.Tab.1.left" timestamp="1586678406670">
+      <screen x="0" y="23" width="1440" height="785" />
+    </state>
+    <state width="709" height="249" key="GridCell.Tab.1.left/0.23.1440.785@0.23.1440.785" timestamp="1586678406670" />
+    <state width="709" height="249" key="GridCell.Tab.1.right" timestamp="1586678406670">
+      <screen x="0" y="23" width="1440" height="785" />
+    </state>
+    <state width="709" height="249" key="GridCell.Tab.1.right/0.23.1440.785@0.23.1440.785" timestamp="1586678406670" />
+    <state x="221" y="54" key="SettingsEditor" timestamp="1586675649277">
+      <screen x="0" y="23" width="1440" height="785" />
+    </state>
+    <state x="221" y="54" key="SettingsEditor/0.23.1440.785@0.23.1440.785" timestamp="1586675649277" />
+    <state x="320" y="155" key="Vcs.Push.Dialog.v2" timestamp="1586674778360">
+      <screen x="0" y="23" width="1440" height="785" />
+    </state>
+    <state x="320" y="155" key="Vcs.Push.Dialog.v2/0.23.1440.785@0.23.1440.785" timestamp="1586674778360" />
     <state x="100" y="123" width="1240" height="585" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1586674636935">
       <screen x="0" y="23" width="1440" height="785" />
     </state>
     <state x="100" y="123" width="1240" height="585" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.23.1440.785@0.23.1440.785" timestamp="1586674636935" />
+    <state x="385" y="137" width="670" height="676" key="search.everywhere.popup" timestamp="1586680048831">
+      <screen x="0" y="23" width="1440" height="790" />
+    </state>
+    <state x="385" y="137" width="670" height="676" key="search.everywhere.popup/0.23.1440.790@0.23.1440.790" timestamp="1586680048831" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/start.py</url>
+          <line>3</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -2,6 +2,8 @@ import sys, socket, json, threading
 from PyQt5.QtWidgets import QDialog, QLabel, QApplication, QGridLayout, QLineEdit, QSpinBox, QPushButton, QHBoxLayout
 from PyQt5.QtCore import QRect, QBasicTimer
 from PyQt5.QtGui import QPainter, QColor
+
+
 class OnlineDialog(QDialog):
     IP = ''
     host = 1024
@@ -10,11 +12,13 @@ class OnlineDialog(QDialog):
     # receiverThread = None
     status = 0
     # 0:connecting 1:waiting 2:my turn
+
     def __init__(self, sock, connectEvent):
         self.connectEvent = connectEvent
         self.socket = sock
         super().__init__()
         self.initUI()
+
     def initUI(self):
         self.setWindowTitle('Get online')
         self.resize(400, 300)   # set dialog size to 400*3Q00
@@ -43,7 +47,7 @@ class OnlineDialog(QDialog):
         # self.pwdEdit = QLineEdit(self)
         # self.grid.addWidget(self.pwdEdit)
         
-        self.tablelb = QLabel("Table:",self)
+        self.tablelb = QLabel("Table:", self)
         self.grid.addWidget(self.tablelb, 4, 1)
 
         self.tableEdit = QSpinBox(self)
@@ -56,7 +60,7 @@ class OnlineDialog(QDialog):
         self.grid.addLayout(self.hbox, 5, 2)
         self.hbox.setContentsMargins(180, 0, 0, 0)
 
-        self.cancelButton = QPushButton('Cancel',self)
+        self.cancelButton = QPushButton('Cancel', self)
         self.hbox.addWidget(self.cancelButton)
         self.cancelButton.pressed.connect(self.cancelButtonEvent)
 
@@ -70,19 +74,25 @@ class OnlineDialog(QDialog):
         self.setLayout(self.grid)
         # self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.show()
+
     def cancelButtonEvent(self):
         if self.receiverThread and self.status == 1:
             self.receiverThread
+
     def onChange1(self, text):
         self.IP = text
+
     def onChange2(self, text):
         self.host = text
+
     def onChange3(self, text):
         self.table = text
+
     def OK(self):
         self.statusBar.setText('Connecting...')
         self.receiverThread = threading.Thread(target=self.receiverThreadFunction)
         self.receiverThread.start()
+
     def receiverThreadFunction(self):
         if self.pid == 0:
             while True:
@@ -114,7 +124,7 @@ class OnlineDialog(QDialog):
                             self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                             self.receiverThread = None
                             return
-                        #break
+                        # break
                 except ConnectionRefusedError:
                     self.statusBar.setText('Connection \nrefused!')
                     self.statusBar.setText(recv['reason'])
@@ -140,9 +150,11 @@ class OnlineDialog(QDialog):
                         # TODO receive EOL
                     except BlockingIOError:
                         break
-                # TODO return datas
+                # TODO return data
+
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = OnlineDialog(socket.socket(), lambda: 0)
     sys.exit(app.exec_())
-    threading.Thread(). 
+    threading.Thread()
